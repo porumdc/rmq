@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "216509240726",
+    "firebase_url": "https://rmqpricelist.firebaseio.com",
+    "project_id": "rmqpricelist",
+    "storage_bucket": "rmqpricelist.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216509240726:android:fb3bbced735b473d32b9b7",
+        "android_client_info": {
+          "package_name": "com.example.rmq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "216509240726-o6p6j5eepf0grl445boh2dubr9vrqv23.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs81yuFXFa01YbpHVq7r2nwU7RDinXOyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "216509240726-o6p6j5eepf0grl445boh2dubr9vrqv23.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

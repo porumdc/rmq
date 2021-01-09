@@ -1,0 +1,16 @@
+{
+	"[dart]": {
+		"editor.tabSize": 4,
+		"editor.insertSpaces": false,
+		"editor.detectIndentation": false,
+		"editor.suggest.insertMode": "replace"
+	},
+	"editor.acceptSuggestionOnEnter": "off",
+	"editor.formatOnSave": true,
+	"workbench.colorTheme": "Cobalt2",
+	"editor.tabSize": 4,
+	"editor.detectIndentation": false,
+    "editor.suggest.insertMode": "replace",
+    "editor.defaultFormatter": "Dart-Code.flutter",
+    "editor.insertSpaces": false,
+}
