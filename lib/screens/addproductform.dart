@@ -16,18 +16,6 @@ class AddProductForm extends StatefulWidget {
 }
 
 class _AddProductFormState extends State<AddProductForm> {
-	final _formKey = GlobalKey<FormState>();
-	final databaseReference = FirebaseFirestore.instance;
-
-	String _productName;
-	String _retailPrice;
-	String _wholesalePrice;
-	String _category;
-	String loading = 'Choose image';
-	String imageURL;
-	bool isLoading = false;
-	String error = '';
-	String _itemcode;
 
 	void uploadImage() async {
 		final _storage = FirebaseStorage.instance;
@@ -53,6 +41,7 @@ class _AddProductFormState extends State<AddProductForm> {
 		} else {
 			print('Denied');
 		}
+		print(imageURL);
 	}
 
 	void addProduct() async {
@@ -66,9 +55,26 @@ class _AddProductFormState extends State<AddProductForm> {
 		});
 	}
 
+	final _formKey = GlobalKey<FormState>();
+	final databaseReference = FirebaseFirestore.instance;
+
+	String _productName;
+	String _retailPrice;
+	String _wholesalePrice;
+	String _category;
+	String loading = 'Choose image';
+	String imageURL;
+	bool isLoading = false;
+	String error = '';
+	String _itemcode;
+
 	@override
 	Widget build(BuildContext context) {
 		return Scaffold(
+			appBar: AppBar(
+				backgroundColor: rmqPrimaryColor,
+				title: Text("Add a product"),
+			),
 			backgroundColor: Colors.grey[200],
 			body: StreamBuilder(
 				stream: FirebaseFirestore.instance.collection('PriceList').snapshots(),
@@ -77,7 +83,9 @@ class _AddProductFormState extends State<AddProductForm> {
 						padding: const EdgeInsets.only(right: 40.0, left: 40.0),
 						child: Form(
 							key: _formKey,
-							child: Column(
+							child: ListView(
+								shrinkWrap: true,
+								//physics: const NeverScrollableScrollPhysics(),
 								children: <Widget>[
 									SizedBox(height: 20.0),
 									TextFormField(
@@ -139,48 +147,66 @@ class _AddProductFormState extends State<AddProductForm> {
 										padding: EdgeInsets.symmetric(
 											vertical: 15.0, horizontal: 100.0),
 										child: Text(
-										'Choose image to upload',
-										style: TextStyle(color: Colors.white, fontSize: 15.0),
+											'Choose image to upload',
+											style: TextStyle(color: Colors.white, fontSize: 15.0),
 										),
 										onPressed: () async {
-										try {
-											if (_formKey.currentState.validate()) {
-											uploadImage();
+											try {
+												//if (_formKey.currentState.validate()) {
+												uploadImage();
+												//}
+											} catch (e) {
+												setState(() {
+													setState(() => error = e.toString());
+												});
 											}
-										} catch (e) {
-											setState(() {
-											setState(() => error = e.toString());
-											});
-										}
 										},
 									),
 									SizedBox(height: 20.0),
-									RaisedButton(
-										color: rmqPrimaryColor,
-										padding: EdgeInsets.symmetric(
-											vertical: 15.0, horizontal: 100.0),
-										child: Text(
-										'Done',
-										style: TextStyle(color: Colors.white, fontSize: 15.0),
+									Opacity(
+										opacity: (imageURL == null || imageURL == "")
+											? 0.0
+											: 1.0,
+										child: RaisedButton(
+											color: rmqPrimaryColor,
+											padding: EdgeInsets.symmetric(
+												vertical: 15.0, horizontal: 100.0),
+											child: Text(
+												'Done',
+												style: TextStyle(color: Colors.white, fontSize: 15.0),
+											),
+											onPressed: () async {
+												try {
+													if (_formKey.currentState.validate() &&
+														imageURL != "") {
+														Navigator.pop(context);
+														addProduct();
+													} else if (_formKey.currentState.validate() && (imageURL == null || imageURL == "")){
+														setState(() {
+															setState(() => error = "Add an image");
+														});
+													}
+												} catch (e) {
+													setState(() {
+														setState(() => error = e.toString());
+													});
+												}
+											},
 										),
-										onPressed: () async {
-										try {
-											if (_formKey.currentState.validate() &&
-												imageURL != null) {
-											addProduct();
-											Navigator.pop(context);
-											} else {
-											setState(() {
-												setState(() => error = "Add an image");
-											});
-											}
-										} catch (e) {
-											setState(() {
-											setState(() => error = e.toString());
-											});
-										}
-										},
 									),
+									SizedBox(height: 20.0),
+
+									(imageURL == null || imageURL == "") 
+										? Container() 
+										: Image.network(
+											imageURL,
+											loadingBuilder: (context, child, progress){
+												return progress == null
+													? child
+													: LinearProgressIndicator();
+											}
+										),
+
 									SizedBox(height: 20.0),
 									Text(
 										error,

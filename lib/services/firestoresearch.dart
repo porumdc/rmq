@@ -78,47 +78,51 @@ class _FirestoreSearchState extends State<FirestoreSearch> {
 																	mainAxisSize: MainAxisSize.min,
 																	children: <Widget>[
 																		Padding(
-																			padding: EdgeInsets.only(
-																					top: 8.0, bottom: 4.0),
+																			padding: EdgeInsets.only(top: 8.0, bottom: 4.0),
 																			child: Row(
 																				children: <Widget>[
-																					Text(
-																						snapshot.data.docs[index]['name'] +
+																					FittedBox(
+																						fit: BoxFit.fill,
+																						child: Text(
+																							snapshot.data.docs[index]['name'] +
 																								'\n' +
 																								snapshot.data.docs[index]['itemcode'].toString().toUpperCase() +
 																								'\n' +
 																								snapshot.data.docs[index]['category'],
-																						style: TextStyle(fontSize: 20.0),
+																							style: TextStyle(fontSize: 28.0),
+																						),
 																					),
 																					Spacer(),
-																					Image.network(
-																						snapshot.data.docs[index]['imageURL'],
-																						width: 100.0,
-																						height: 100.0,
+																					FittedBox(
+																						fit: BoxFit.contain,
+																						child: Image.network(
+																							snapshot.data.docs[index]['imageURL'],
+																							width: 200.0,
+																							height: 200.0,
+																						),
 																					),
 																				],
 																			),
 																		),
 																		Padding(
-																				padding: EdgeInsets.only(
-																						top: 8.0, bottom: 10.0, left: 10.0),
-																				child: Row(
-																					mainAxisAlignment:
-																							MainAxisAlignment.spaceBetween,
-																					//crossAxisAlignment: CrossAxisAlignment.baseline,
-																					children: <Widget>[
-																						Text('Retail: ' + snapshot.data.docs[index]['retail'],
-																								style:
-																										TextStyle(fontSize: 15.0)),
-																						Spacer(),
-																						Text(
-																								'Wholesale: ' +
-																										snapshot.data.docs[index]['wholesale'],
-																								style:
-																										TextStyle(fontSize: 15.0)),
-																						Spacer(),
-																					],
-																				))
+																			padding: EdgeInsets.only(top: 8.0, bottom: 10.0, left: 10.0),
+																			child: Row(
+																				mainAxisAlignment: MainAxisAlignment.spaceBetween,
+																				//crossAxisAlignment: CrossAxisAlignment.baseline,
+																				children: <Widget>[
+																					Text('Retail: ' + snapshot.data.docs[index]['retail'],
+																						style: TextStyle(fontSize: 25.0)),
+																					Spacer(),
+																					Text(
+																						'Wholesale: ' +
+																							snapshot.data.docs[index]['wholesale'],
+																						style:
+																							TextStyle(fontSize: 25.0),
+																					),
+																					Spacer(),
+																				],
+																			),
+																		),
 																	],
 																),
 															),

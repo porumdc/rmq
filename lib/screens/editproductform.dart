@@ -51,21 +51,11 @@ class _EditProductFormState extends State<EditProductForm> {
 		}
 	}
 
+	
+
 	@override
 	Widget build(BuildContext context) {
 		QueryDocumentSnapshot _passedVar = ModalRoute.of(context).settings.arguments;
-		//String _passedVar = ModalRoute.of(context).settings.arguments;
-		//final Map<String, dynamic> _passedVar = ModalRoute.of(context).settings.arguments;
-		//Stream<DocumentSnapshot> docStream = databaseReference.collection("PriceList").doc(_passedVar['name']).snapshots();
-
-		//_itemcode = _passedVar['itemcode'].toString();
-		// _itemcode = 'SOMETHING';
-		// _productName = _passedVar['name'].toString();
-		// _retailPrice = _passedVar['retail'].toString();
-		// _wholesalePrice	= _passedVar['wholesale'].toString();
-		// _category	= _passedVar['category'].toString();
-		// _imageURL = _passedVar['imageURL'].toString();
-		print(_itemcode);
 		
 		return StreamBuilder(
 			stream: databaseReference.collection("PriceList").doc(_passedVar['name']).snapshots(),
@@ -75,6 +65,45 @@ class _EditProductFormState extends State<EditProductForm> {
 				// } else {
 				return Scaffold(
 					backgroundColor: Colors.grey[200],
+					appBar: AppBar(
+						title: Container(
+							child: Text(
+								"Product name: " + snapshot.data['name']
+							),
+						),
+						backgroundColor: rmqPrimaryColor,
+						actions: <Widget>[
+							FlatButton.icon(
+								onPressed: (){
+									showDialog(
+										context: context,
+										builder: (context) => AlertDialog(
+										title: Text("Delete this product?"),
+										elevation: 24.0,
+										actions: <Widget> [
+											FlatButton(
+												child: Text("No"),
+												onPressed: (){
+													Navigator.pop(context);
+												},
+											),
+											FlatButton(
+												child: Text("Yes"),
+												onPressed: () async{
+													Navigator.pop(context);
+													Navigator.pop(context);
+													await databaseReference.collection("PriceList").doc(snapshot.data['name']).delete();
+												},
+											),
+										],
+									),
+									);
+								},
+								icon: Icon(Icons.close),
+								label: Text(""),
+							),
+						],
+					),
 					body: Padding(
 						padding: EdgeInsets.only(right: 30.0, left: 30.0, top: 10.0),
 						child: Form(
@@ -82,17 +111,6 @@ class _EditProductFormState extends State<EditProductForm> {
 							child: Column(
 								children: <Widget>[
 									SizedBox(height: 20.0),
-									TextFormField(
-										decoration:
-											textInputDecoration.copyWith(hintText: 'Product Name', labelText: 'Product Name',),
-										validator: (val) =>
-											val.isEmpty ? 'Please enter product name' : null,
-										onChanged: (val) => setState(() => _productName = val),
-										//onChanged: (val) => setState((){ _productName = val; }),
-										initialValue: _passedVar['name'],
-										onSaved: (String value) { _productName = value;},
-									),
-									SizedBox(height: 15.0),
 									TextFormField(
 										decoration:
 											textInputDecoration.copyWith(hintText: 'Item Code', labelText: 'Item Code'),
