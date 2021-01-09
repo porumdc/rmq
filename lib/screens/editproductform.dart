@@ -12,14 +12,7 @@ class EditProductForm extends StatefulWidget {
 
 class _EditProductFormState extends State<EditProductForm> {
 
-	// @override
-	// void initState(){
-	// 	final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-	// 	super.initState();
-	// }
-
 	final _formKey = GlobalKey<FormState>();
-	//static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 	final databaseReference = FirebaseFirestore.instance;
 	
 	bool isLoading = false;
@@ -29,7 +22,7 @@ class _EditProductFormState extends State<EditProductForm> {
 	String _retailPrice = '';
 	String _wholesalePrice = '';
 	String _category = '';
-	String _imageURL = '';
+	//String _imageURL = '';
 
 	void addProduct(String name, String itemcode, String category, String wholesale, String retail) async {
 		try{
@@ -39,7 +32,6 @@ class _EditProductFormState extends State<EditProductForm> {
 				.update({
 					'retail': retail,
 					'wholesale': wholesale,
-					'name': name,
 					'category': category,
 					'itemcode': itemcode,
 					//'imageURL': imageURL,
@@ -51,11 +43,10 @@ class _EditProductFormState extends State<EditProductForm> {
 		}
 	}
 
-	
-
 	@override
 	Widget build(BuildContext context) {
 		QueryDocumentSnapshot _passedVar = ModalRoute.of(context).settings.arguments;
+		_productName = _passedVar['name'];
 		
 		return StreamBuilder(
 			stream: databaseReference.collection("PriceList").doc(_passedVar['name']).snapshots(),
@@ -68,7 +59,7 @@ class _EditProductFormState extends State<EditProductForm> {
 					appBar: AppBar(
 						title: Container(
 							child: Text(
-								"Product name: " + snapshot.data['name']
+								"Product name: " + _passedVar['name']
 							),
 						),
 						backgroundColor: rmqPrimaryColor,
@@ -78,25 +69,25 @@ class _EditProductFormState extends State<EditProductForm> {
 									showDialog(
 										context: context,
 										builder: (context) => AlertDialog(
-										title: Text("Delete this product?"),
-										elevation: 24.0,
-										actions: <Widget> [
-											FlatButton(
-												child: Text("No"),
-												onPressed: (){
-													Navigator.pop(context);
-												},
-											),
-											FlatButton(
-												child: Text("Yes"),
-												onPressed: () async{
-													Navigator.pop(context);
-													Navigator.pop(context);
-													await databaseReference.collection("PriceList").doc(snapshot.data['name']).delete();
-												},
-											),
-										],
-									),
+											title: Text("Delete this product?"),
+											elevation: 24.0,
+											actions: <Widget> [
+												FlatButton(
+													child: Text("No"),
+													onPressed: (){
+														Navigator.pop(context);
+													},
+												),
+												FlatButton(
+													child: Text("Yes"),
+													onPressed: () async{
+														Navigator.pop(context);
+														Navigator.pop(context);
+														await databaseReference.collection("PriceList").doc(snapshot.data['name']).delete();
+													},
+												),
+											],
+										),
 									);
 								},
 								icon: Icon(Icons.close),
@@ -166,12 +157,6 @@ class _EditProductFormState extends State<EditProductForm> {
 										onPressed: () async {
 											try {
 												//print(_productName + ' click ' + _itemcode);
-												print(_productName);
-												print(_retailPrice);
-												print(_wholesalePrice);
-												print(_itemcode);
-												print(_category);
-												print(_imageURL);
 												if (_formKey.currentState.validate()) {
 													_formKey.currentState.save();
 													//print(snapshot.data['name'] + ' click ' + _productName);
@@ -187,7 +172,7 @@ class _EditProductFormState extends State<EditProductForm> {
 									),
 									Text(
 										error,
-										style: TextStyle(color: rmqPrimaryColor, fontSize: 14.0),
+										style: TextStyle(color: rmqPrimaryColor, fontSize: 24.0),
 									),
 								],
 							),

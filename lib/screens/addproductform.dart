@@ -41,7 +41,7 @@ class _AddProductFormState extends State<AddProductForm> {
 		} else {
 			print('Denied');
 		}
-		print(imageURL);
+		//print(imageURL);
 	}
 
 	void addProduct() async {
@@ -94,6 +94,7 @@ class _AddProductFormState extends State<AddProductForm> {
 										validator: (val) =>
 											val.isEmpty ? 'Please enter product name' : null,
 										onChanged: (val) => setState(() => _productName = val),
+										onSaved: (String value) { _productName = value;},
 									),
 									SizedBox(height: 15.0),
 									TextFormField(
@@ -102,6 +103,7 @@ class _AddProductFormState extends State<AddProductForm> {
 										validator: (val) =>
 											val.isEmpty ? 'Please enter Item code' : null,
 										onChanged: (val) => setState(() => _itemcode = val),
+										onSaved: (String value) { _itemcode = value;},
 									),
 									SizedBox(height: 15.0),
 									TextFormField(
@@ -117,6 +119,7 @@ class _AddProductFormState extends State<AddProductForm> {
 										validator: (val) =>
 											val.isEmpty ? 'Please enter wholesale price' : null,
 										onChanged: (val) => setState(() => _wholesalePrice = val),
+										onSaved: (String value) { _wholesalePrice = value;},
 									),
 									SizedBox(height: 15.0),
 									TextFormField(
@@ -131,6 +134,7 @@ class _AddProductFormState extends State<AddProductForm> {
 										validator: (val) =>
 											val.isEmpty ? 'Please enter retail price' : null,
 										onChanged: (val) => setState(() => _retailPrice = val),
+										onSaved: (String value) { _retailPrice = value;},
 									),
 									SizedBox(height: 15.0),
 									TextFormField(
@@ -140,6 +144,7 @@ class _AddProductFormState extends State<AddProductForm> {
 											? 'Please enter product\'s category'
 											: null,
 										onChanged: (val) => setState(() => _category = val),
+										onSaved: (String value) { _category = value;},
 									),
 									SizedBox(height: 20.0),
 									RaisedButton(
@@ -153,6 +158,7 @@ class _AddProductFormState extends State<AddProductForm> {
 										onPressed: () async {
 											try {
 												//if (_formKey.currentState.validate()) {
+												_formKey.currentState.save();
 												uploadImage();
 												//}
 											} catch (e) {
