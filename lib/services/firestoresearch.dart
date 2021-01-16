@@ -46,7 +46,6 @@ class _FirestoreSearchState extends State<FirestoreSearch> {
 						itemCount: snapshot.data.docs.length,
 						itemBuilder: (context, index) {
 							DocumentSnapshot data = snapshot.data.docs[index];
-							//final Map<String, dynamic> data = snapshot.data as Map<String, dynamic>;
 							return Center(
 								child: GestureDetector(
 									onTap: () async {
@@ -62,19 +61,41 @@ class _FirestoreSearchState extends State<FirestoreSearch> {
 									},
 									child: Container(
 										//decoration: boxBorderDecoration,
-										// padding: EdgeInsets.only(top: 10.0),
+										padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
 										width: MediaQuery.of(context).size.width / 1.1,
-										height: MediaQuery.of(context).size.height / 3.5,
+										height: MediaQuery.of(context).size.height / 4.2,
 										// margin: EdgeInsets.fromLTRB(10, 10, 10, 30),
 										child: Card(
 											color: rmqSecondaryColor,
-											elevation: 20,
-											child: Column(
-												mainAxisSize: MainAxisSize.max,
+											elevation: 5,
+											child: Row(
+												mainAxisAlignment: MainAxisAlignment.start,
+												crossAxisAlignment: CrossAxisAlignment.center,
 												children: <Widget>[
-													Padding(
-														padding: EdgeInsets.only(top: 20.0, left: 10.0),
+													Flexible(
+														flex: 1,
 														child: Row(
+															children: <Widget>[
+																Container(
+																	//padding: EdgeInsets.only(left: 10.0, top: 10.0, bottom: 10.0,),
+																	margin: EdgeInsets.only(left: 10.0, top: 10.0, bottom: 10.0),
+																	width: MediaQuery.of(context).size.width / 4.4,
+																	height: MediaQuery.of(context).size.height / 3,
+																	child: FittedBox(
+																		fit: BoxFit.contain,
+																		child: Image.network(
+																			snapshot.data.docs[index]['imageURL'],
+																		),
+																	),
+																),
+															],
+														),
+													),
+													Flexible(
+														flex: 2,
+														child: Column(
+															crossAxisAlignment: CrossAxisAlignment.start,
+															mainAxisAlignment: MainAxisAlignment.center,
 															children: <Widget>[
 																Text(
 																	snapshot.data.docs[index]['name'] +
@@ -84,33 +105,15 @@ class _FirestoreSearchState extends State<FirestoreSearch> {
 																		snapshot.data.docs[index]['category'],
 																	style: TextStyle(fontSize: MediaQuery.of(context).size.width / 16.1),
 																),
-																Spacer(),
-																Image.network(
-																	snapshot.data.docs[index]['imageURL'],
-																	width: MediaQuery.of(context).size.width / 2.5,
-																	height: MediaQuery.of(context).size.height / 5,
-																),
-															],
-														),
-													),
-													Padding(
-														padding: EdgeInsets.only(top: 8.0, bottom: 10.0, left: 10.0),
-														child: Row(
-															mainAxisAlignment: MainAxisAlignment.spaceBetween,
-															//crossAxisAlignment: CrossAxisAlignment.baseline,
-															children: <Widget>[
-																Text('Retail: ' + snapshot.data.docs[index]['retail'],
-																	style: TextStyle(fontSize: MediaQuery.of(context).size.width / 23.1)),
-																Spacer(),
 																Text(
 																	'Wholesale: ' +
-																		snapshot.data.docs[index]['wholesale'],
-																	style:
-																		TextStyle(fontSize: MediaQuery.of(context).size.width / 23.1),
-																),
-																Spacer(),
+																	snapshot.data.docs[index]['wholesale'] + 
+																	'\nRetail: ' +
+																	snapshot.data.docs[index]['retail'],
+																	style: TextStyle(fontSize: MediaQuery.of(context).size.width / 24),
+																)
 															],
-														),
+																),
 													),
 												],
 											),
