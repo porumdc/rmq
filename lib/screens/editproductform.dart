@@ -22,7 +22,7 @@ class _EditProductFormState extends State<EditProductForm> {
 	String _retailPrice = '';
 	String _wholesalePrice = '';
 	String _category = '';
-	//String _imageURL = '';
+	String _catValue;
 
 	void addProduct(String name, String itemcode, String category, String wholesale, String retail) async {
 		try{
@@ -136,14 +136,43 @@ class _EditProductFormState extends State<EditProductForm> {
 										onSaved: (String value) { _retailPrice = value;},
 									),
 									SizedBox(height: 15.0),
-									TextFormField(
-										decoration:
-											textInputDecoration.copyWith(hintText: 'Category', labelText: 'Category'),
-										validator: (val) =>
-											val.isEmpty ? 'Please enter product\'s category' : null,
-										onChanged: (val) => setState(() => _category = val),
-										initialValue: _passedVar['category'],
-										onSaved: (String value) { _category = value;},
+									// TextFormField(
+									// 	decoration:
+									// 		textInputDecoration.copyWith(hintText: 'Category', labelText: 'Category'),
+									// 	validator: (val) =>
+									// 		val.isEmpty ? 'Please enter product\'s category' : null,
+									// 	onChanged: (val) => setState(() => _category = val),
+									// 	initialValue: _passedVar['category'],
+									// 	onSaved: (String value) { _category = value;},
+									// ),
+									DropdownButtonFormField(
+										decoration: textInputDecoration.copyWith(
+											hintText: 'Category',
+										),
+										value: _catValue,
+										items: [
+											DropdownMenuItem(
+												child: Text('Glassware'),
+												value: 'Glassware',
+											),
+											DropdownMenuItem(
+												child: Text('Houseware'),
+												value: 'Houseware',
+											),
+											DropdownMenuItem(
+												child: Text('School Supplies'),
+												value: 'School Supplies',
+											),
+											DropdownMenuItem(
+												child: Text('Hardware'),
+												value: 'Hardware',
+											),
+										],
+										onChanged: (String value) {
+											setState(() {
+												_category = value;
+											});
+										},
 									),
 									SizedBox(height: 20.0),
 									RaisedButton(
