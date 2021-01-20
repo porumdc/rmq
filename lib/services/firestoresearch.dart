@@ -113,7 +113,7 @@ class _FirestoreSearchState extends State<FirestoreSearch> {
 																	style: TextStyle(fontSize: MediaQuery.of(context).size.width / 24),
 																)
 															],
-																),
+														),
 													),
 												],
 											),

@@ -61,17 +61,123 @@ class _HomeState extends State<Home> {
 					
 				],
 			),
-			body: StreamBuilder(
-				stream: FirebaseFirestore.instance.collection('PriceList').snapshots(),
-				builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-					if (!snapshot.hasData) {
-						return Center(
-							child: CircularProgressIndicator(),
-						);
-					} else {
-						return Center(child: Text('Hello world'));
-					}
-				},
+			body: SingleChildScrollView(
+				child: Column(
+			  	children: <Widget> [
+			  		Row(
+			  			mainAxisAlignment: MainAxisAlignment.center,
+			  			crossAxisAlignment: CrossAxisAlignment.center,
+			  			children: <Widget> [
+			  				Flexible(
+			  					flex: 1,
+			  					child: Container(
+			  						width: MediaQuery.of(context).size.width / 2,
+			  						height: MediaQuery.of(context).size.width / 2,
+			  						child: FlatButton(
+			  							onPressed: () {},
+			  							child: Text('Hardware'),
+			  						),
+			  					),
+			  				),
+			  				Flexible(
+			  					flex: 1,
+			  					child: Container(
+			  						width: MediaQuery.of(context).size.width / 2,
+			  						height: MediaQuery.of(context).size.width / 2,
+			  						child: FlatButton(
+			  							onPressed: () {},
+			  							child: Text('Glassware'),
+			  						),
+			  					),
+			  				),
+			  			],
+			  		),
+			  		Row(
+			  			mainAxisAlignment: MainAxisAlignment.center,
+			  			crossAxisAlignment: CrossAxisAlignment.center,
+			  			children: <Widget> [
+			  				Flexible(
+			  					flex: 1,
+			  					child: Container(
+			  						width: MediaQuery.of(context).size.width / 2,
+			  						height: MediaQuery.of(context).size.width / 2,
+			  						child: FlatButton(
+			  							onPressed: () {},
+			  							child: Text('School Supplies'),
+			  						),
+			  					),
+			  				),
+			  				Flexible(
+			  					flex: 1,
+			  					child: Container(
+			  						width: MediaQuery.of(context).size.width / 2,
+			  						height: MediaQuery.of(context).size.width / 2,
+			  						child: FlatButton(
+			  							onPressed: () {},
+			  							child: Text('Houseware'),
+			  						),
+			  					),
+			  				),
+			  			],
+			  		),
+			  		Row(
+			  			mainAxisAlignment: MainAxisAlignment.center,
+			  			crossAxisAlignment: CrossAxisAlignment.center,
+			  			children: <Widget> [
+			  				Flexible(
+			  					flex: 1,
+			  					child: Container(
+			  						width: MediaQuery.of(context).size.width / 2,
+			  						height: MediaQuery.of(context).size.width / 2,
+			  						child: FlatButton(
+			  							onPressed: () {},
+			  							child: Text('Plasticware'),
+			  						),
+			  					),
+			  				),
+			  				Flexible(
+			  					flex: 1,
+			  					child: Container(
+			  						width: MediaQuery.of(context).size.width / 2,
+			  						height: MediaQuery.of(context).size.width / 2,
+			  						child: FlatButton(
+			  							onPressed: () {},
+			  							child: Text('Second'),
+			  						),
+			  					),
+			  				),
+			  			],
+			  		),
+			  		Row(
+			  			mainAxisAlignment: MainAxisAlignment.center,
+			  			crossAxisAlignment: CrossAxisAlignment.center,
+			  			children: <Widget> [
+			  				Flexible(
+			  					flex: 1,
+			  					child: Container(
+			  						width: MediaQuery.of(context).size.width / 2,
+			  						height: MediaQuery.of(context).size.width / 2,
+			  						child: FlatButton(
+			  							onPressed: () {},
+			  							child: Text('First'),
+			  						),
+			  					),
+			  				),
+			  				Flexible(
+			  					flex: 1,
+			  					child: Container(
+			  						width: MediaQuery.of(context).size.width / 2,
+			  						height: MediaQuery.of(context).size.width / 2,
+			  						child: FlatButton(
+			  							onPressed: () {},
+			  							child: Text('Second'),
+			  						),
+			  					),
+			  				),
+			  			],
+			  		),
+			  	],
+			  ),
 			),
 		);
 	}
