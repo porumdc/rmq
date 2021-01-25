@@ -9,7 +9,8 @@ class FirestoreSearch extends StatefulWidget {
 }
 
 class _FirestoreSearchState extends State<FirestoreSearch> {
-	String query;
+	String query = "";
+	String plusz;	
 
 	@override
 	Widget build(BuildContext context) {
@@ -24,17 +25,20 @@ class _FirestoreSearchState extends State<FirestoreSearch> {
 				),
 				title: Card(
 					child: TextField(
-						onChanged: (val) {
-							setState(() { query = val; });
+						onChanged: (String val) {
+							setState(() { 
+								query = val;
+								plusz = query + 'z';
+							},);
 						},
 					),
 				),
 			),
 			body: StreamBuilder<QuerySnapshot>(
 				stream: (query != "" && query != null)
-					? FirebaseFirestore.instance
-						.collection('PriceList')
-						.where("name".toString().toLowerCase(), isGreaterThanOrEqualTo: query)
+					? FirebaseFirestore.instance.collection('PriceList')
+						.where('name', isGreaterThanOrEqualTo: query)
+						.where('name', isLessThan: plusz)
 						.snapshots()
 					: FirebaseFirestore.instance
 						.collection('PriceList')

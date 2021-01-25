@@ -136,18 +136,9 @@ class _EditProductFormState extends State<EditProductForm> {
 										onSaved: (String value) { _retailPrice = value;},
 									),
 									SizedBox(height: 15.0),
-									// TextFormField(
-									// 	decoration:
-									// 		textInputDecoration.copyWith(hintText: 'Category', labelText: 'Category'),
-									// 	validator: (val) =>
-									// 		val.isEmpty ? 'Please enter product\'s category' : null,
-									// 	onChanged: (val) => setState(() => _category = val),
-									// 	initialValue: _passedVar['category'],
-									// 	onSaved: (String value) { _category = value;},
-									// ),
 									DropdownButtonFormField(
 										decoration: textInputDecoration.copyWith(
-											hintText: 'Category',
+											hintText: _passedVar['category'],
 										),
 										value: _catValue,
 										items: [
