@@ -4,6 +4,7 @@ import 'package:rmq/screens/addproductform.dart';
 import 'package:rmq/shared/constants.dart';
 import 'package:rmq/services/firestoresearch.dart';
 // import 'package:rmq/screens/editproductform.dart';
+import 'package:rmq/screens/categories.dart';
 
 class Home extends StatefulWidget {
 	@override
@@ -35,6 +36,7 @@ class _HomeState extends State<Home> {
 	// 		},
 	// 	);
 	// }
+	String catName;
 
 	@override
 	Widget build(BuildContext context) {
@@ -74,7 +76,16 @@ class _HomeState extends State<Home> {
 										width: MediaQuery.of(context).size.width / 2,
 										height: MediaQuery.of(context).size.width / 2,
 										child: FlatButton(
-											onPressed: () {},
+											onPressed: () async {
+												Navigator.push(
+													context, MaterialPageRoute(
+														builder: (context) => CategoriesScreen(),
+														settings: RouteSettings(
+															arguments: catName = 'Hardware',
+														),
+													),
+												);
+											},
 											child: Text('Hardware'),
 										),
 									),
@@ -85,7 +96,16 @@ class _HomeState extends State<Home> {
 										width: MediaQuery.of(context).size.width / 2,
 										height: MediaQuery.of(context).size.width / 2,
 										child: FlatButton(
-											onPressed: () {},
+											onPressed: () async {
+												Navigator.push(
+													context, MaterialPageRoute(
+														builder: (context) => CategoriesScreen(),
+														settings: RouteSettings(
+															arguments: catName = 'Glassware',
+														),
+													),
+												);
+											},
 											child: Text('Glassware'),
 										),
 									),
@@ -102,7 +122,16 @@ class _HomeState extends State<Home> {
 										width: MediaQuery.of(context).size.width / 2,
 										height: MediaQuery.of(context).size.width / 2,
 										child: FlatButton(
-											onPressed: () {},
+											onPressed: () async {
+												Navigator.push(
+													context, MaterialPageRoute(
+														builder: (context) => CategoriesScreen(),
+														settings: RouteSettings(
+															arguments: catName = 'School Supplies',
+														),
+													),
+												);
+											},
 											child: Text('School Supplies'),
 										),
 									),
@@ -113,7 +142,16 @@ class _HomeState extends State<Home> {
 										width: MediaQuery.of(context).size.width / 2,
 										height: MediaQuery.of(context).size.width / 2,
 										child: FlatButton(
-											onPressed: () {},
+											onPressed: () async {
+												Navigator.push(
+													context, MaterialPageRoute(
+														builder: (context) => CategoriesScreen(),
+														settings: RouteSettings(
+															arguments: catName = 'Houseware',
+														),
+													),
+												);
+											},
 											child: Text('Houseware'),
 										),
 									),
@@ -130,7 +168,16 @@ class _HomeState extends State<Home> {
 										width: MediaQuery.of(context).size.width / 2,
 										height: MediaQuery.of(context).size.width / 2,
 										child: FlatButton(
-											onPressed: () {},
+											onPressed: () async {
+												Navigator.push(
+													context, MaterialPageRoute(
+														builder: (context) => CategoriesScreen(),
+														settings: RouteSettings(
+															arguments: catName = 'Plasticware',
+														),
+													),
+												);
+											},
 											child: Text('Plasticware'),
 										),
 									),
@@ -142,7 +189,7 @@ class _HomeState extends State<Home> {
 										height: MediaQuery.of(context).size.width / 2,
 										child: FlatButton(
 											onPressed: () {},
-											child: Text('Second'),
+											child: Text('Empty'),
 										),
 									),
 								),
@@ -159,7 +206,7 @@ class _HomeState extends State<Home> {
 										height: MediaQuery.of(context).size.width / 2,
 										child: FlatButton(
 											onPressed: () {},
-											child: Text('First'),
+											child: Text('Empty'),
 										),
 									),
 								),
@@ -170,7 +217,7 @@ class _HomeState extends State<Home> {
 										height: MediaQuery.of(context).size.width / 2,
 										child: FlatButton(
 											onPressed: () {},
-											child: Text('Second'),
+											child: Text('Empty'),
 										),
 									),
 								),

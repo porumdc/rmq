@@ -46,7 +46,7 @@ class _EditProductFormState extends State<EditProductForm> {
 	@override
 	Widget build(BuildContext context) {
 		QueryDocumentSnapshot _passedVar = ModalRoute.of(context).settings.arguments;
-		_productName = _passedVar['name'];
+		_category = _passedVar['category'];
 		
 		return StreamBuilder(
 			stream: databaseReference.collection("PriceList").doc(_passedVar['name']).snapshots(),
@@ -164,6 +164,7 @@ class _EditProductFormState extends State<EditProductForm> {
 												_category = value;
 											});
 										},
+										
 									),
 									SizedBox(height: 20.0),
 									RaisedButton(

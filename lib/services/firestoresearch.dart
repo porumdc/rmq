@@ -10,7 +10,7 @@ class FirestoreSearch extends StatefulWidget {
 
 class _FirestoreSearchState extends State<FirestoreSearch> {
 	String query = "";
-	String plusz;	
+	String plusz;
 
 	@override
 	Widget build(BuildContext context) {
