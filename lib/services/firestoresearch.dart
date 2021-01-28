@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:rmq/shared/constants.dart';
 import 'package:rmq/screens/editproductform.dart';
+import 'package:rmq/widgets/cardwidget.dart';
 
 class FirestoreSearch extends StatefulWidget {
 	@override
@@ -63,66 +64,14 @@ class _FirestoreSearchState extends State<FirestoreSearch> {
 											),
 										);
 									},
-									child: Container(
-										//decoration: boxBorderDecoration,
-										padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
-										width: MediaQuery.of(context).size.width / 1.1,
-										height: MediaQuery.of(context).size.height / 4.2,
-										// margin: EdgeInsets.fromLTRB(10, 10, 10, 30),
-										child: Card(
-											color: rmqSecondaryColor,
-											elevation: 5,
-											child: Row(
-												mainAxisAlignment: MainAxisAlignment.start,
-												crossAxisAlignment: CrossAxisAlignment.center,
-												children: <Widget>[
-													Flexible(
-														flex: 1,
-														child: Row(
-															children: <Widget>[
-																Container(
-																	//padding: EdgeInsets.only(left: 10.0, top: 10.0, bottom: 10.0,),
-																	margin: EdgeInsets.only(left: 10.0, top: 10.0, bottom: 10.0),
-																	width: MediaQuery.of(context).size.width / 4.4,
-																	height: MediaQuery.of(context).size.height / 3,
-																	child: FittedBox(
-																		fit: BoxFit.contain,
-																		child: Image.network(
-																			snapshot.data.docs[index]['imageURL'],
-																		),
-																	),
-																),
-															],
-														),
-													),
-													Flexible(
-														flex: 2,
-														child: Column(
-															crossAxisAlignment: CrossAxisAlignment.start,
-															mainAxisAlignment: MainAxisAlignment.center,
-															children: <Widget>[
-																Text(
-																	snapshot.data.docs[index]['name'] +
-																		'\n' +
-																		snapshot.data.docs[index]['itemcode'].toString().toUpperCase() +
-																		'\n' +
-																		snapshot.data.docs[index]['category'],
-																	style: TextStyle(fontSize: MediaQuery.of(context).size.width / 16.1),
-																),
-																Text(
-																	'Wholesale: ' +
-																	snapshot.data.docs[index]['wholesale'] + 
-																	'\nRetail: ' +
-																	snapshot.data.docs[index]['retail'],
-																	style: TextStyle(fontSize: MediaQuery.of(context).size.width / 24),
-																)
-															],
-														),
-													),
-												],
-											),
-										),
-									),
+									child: CardWidget(
+										productName: snapshot.data.docs[index]['name'],
+										imageURL: snapshot.data.docs[index]['imageURL'],
+										itemcode: snapshot.data.docs[index]['itemcode'],
+										wholesalePrice: snapshot.data.docs[index]['wholesale'],
+										retailPrice: snapshot.data.docs[index]['retail'],
+										category: snapshot.data.docs[index]['category'],
+									)
 								),
 							);
 						}

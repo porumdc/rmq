@@ -4,7 +4,8 @@ import 'package:rmq/screens/addproductform.dart';
 import 'package:rmq/shared/constants.dart';
 import 'package:rmq/services/firestoresearch.dart';
 // import 'package:rmq/screens/editproductform.dart';
-import 'package:rmq/screens/categories.dart';
+// import 'package:rmq/screens/categories.dart';
+import 'package:rmq/widgets/categoriescontainer.dart';
 
 class Home extends StatefulWidget {
 	@override
@@ -48,62 +49,11 @@ class _HomeState extends State<Home> {
 							children: <Widget> [
 								Flexible(
 									flex: 1,
-									child: Container(
-										width: MediaQuery.of(context).size.width / 2,
-										height: MediaQuery.of(context).size.width / 2,
-										child: FlatButton(
-											onPressed: () async {
-												Navigator.push(
-													context, MaterialPageRoute(
-														builder: (context) => CategoriesScreen(),
-														settings: RouteSettings(
-															arguments: catName = 'Hardware',
-														),
-													),
-												);
-											},
-											child: Container(
-												padding: EdgeInsets.all(10.0),
-												child: Text('Hardware'),
-												decoration: BoxDecoration(
-													border: Border.all(
-														width: 3.0,
-														color: rmqPrimaryColor,
-													),
-												)
-											),
-										),
-									),
+									child: CategoriesContainer(categoryName: 'Hardware',),
 								),
 								Flexible(
 									flex: 1,
-									child: Container(
-										width: MediaQuery.of(context).size.width / 2,
-										height: MediaQuery.of(context).size.width / 2,
-										
-										child: FlatButton(
-											onPressed: () async {
-												Navigator.push(
-													context, MaterialPageRoute(
-														builder: (context) => CategoriesScreen(),
-														settings: RouteSettings(
-															arguments: catName = 'Glassware',
-														),
-													),
-												);
-											},
-											child: Container(
-												child: Text('Glassware'),
-												padding: EdgeInsets.all(10.0),
-												decoration: BoxDecoration(
-													border: Border.all(
-														width: 3.0,
-														color: rmqPrimaryColor,
-													),
-												)
-											),
-										),
-									),
+									child: CategoriesContainer(categoryName: 'Glassware',)
 								),
 							],
 						),
@@ -113,61 +63,11 @@ class _HomeState extends State<Home> {
 							children: <Widget> [
 								Flexible(
 									flex: 1,
-									child: Container(
-										width: MediaQuery.of(context).size.width / 2,
-										height: MediaQuery.of(context).size.width / 2,
-										child: FlatButton(
-											onPressed: () async {
-												Navigator.push(
-													context, MaterialPageRoute(
-														builder: (context) => CategoriesScreen(),
-														settings: RouteSettings(
-															arguments: catName = 'School Supplies',
-														),
-													),
-												);
-											},
-											child: Container(
-												child: Text('School Supplies'),
-												padding: EdgeInsets.all(10.0),
-												decoration: BoxDecoration(
-													border: Border.all(
-														width: 3.0,
-														color: rmqPrimaryColor,
-													),
-												)
-											),
-										),
-									),
+									child: CategoriesContainer(categoryName: 'School Supplies',)
 								),
 								Flexible(
 									flex: 1,
-									child: Container(
-										width: MediaQuery.of(context).size.width / 2,
-										height: MediaQuery.of(context).size.width / 2,
-										child: FlatButton(
-											onPressed: () async {
-												Navigator.push(
-													context, MaterialPageRoute(
-														builder: (context) => CategoriesScreen(),
-														settings: RouteSettings(
-															arguments: catName = 'Houseware',
-														),
-													),
-												);
-											},
-											child: Container(
-												child: Text('Houseware'),
-												padding: EdgeInsets.all(10.0),
-												decoration: BoxDecoration(
-													border: Border.all(
-														width: 3.0,
-														color: rmqPrimaryColor,
-													),
-												)
-											),
-										),
-									),
+									child: CategoriesContainer(categoryName: 'Houseware',)
 								),
 							],
 						),
@@ -177,32 +77,7 @@ class _HomeState extends State<Home> {
 							children: <Widget> [
 								Flexible(
 									flex: 1,
-									child: Container(
-										width: MediaQuery.of(context).size.width / 2,
-										height: MediaQuery.of(context).size.width / 2,
-										child: FlatButton(
-											onPressed: () async {
-												Navigator.push(
-													context, MaterialPageRoute(
-														builder: (context) => CategoriesScreen(),
-														settings: RouteSettings(
-															arguments: catName = 'Plasticware',
-														),
-													),
-												);
-											},
-											child: Container(
-												child: Text('Plasticware'),
-												padding: EdgeInsets.all(10.0),
-												decoration: BoxDecoration(
-													border: Border.all(
-														width: 3.0,
-														color: rmqPrimaryColor,
-													),
-												)
-											),
-										),
-									),
+									child: CategoriesContainer(categoryName: 'Plasticware',)
 								),
 								Flexible(
 									flex: 1,

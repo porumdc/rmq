@@ -13,6 +13,7 @@ class CategoriesScreen extends StatelessWidget {
 			backgroundColor: Color(0xFFDBDBDB),
 			appBar: AppBar(
 				backgroundColor: rmqPrimaryColor,
+				title: Text('$_passedVar'),
 				actions: <Widget>[
 					IconButton(
 						icon: Icon(Icons.add),
