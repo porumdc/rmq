@@ -26,7 +26,7 @@ class _FirestoreSearchState extends State<FirestoreSearch> {
 				title: Card(
 					child: TextField(
 						onChanged: (String val) {
-							setState(() { 
+							setState(() {
 								query = val;
 								plusz = query + 'z';
 							},);

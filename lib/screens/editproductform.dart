@@ -36,7 +36,7 @@ class _EditProductFormState extends State<EditProductForm> {
 					'itemcode': itemcode,
 					//'imageURL': imageURL,
 				})
-				.then((value) => print("Updated"))
+				.then((value) => print('retail: ' + retail + '\nwholesale: ' + wholesale + '\ncategory: ' + category + '\nitemcode: ' + itemcode))
 				.catchError((error) => print("Failed to update user: $error"));
 		} catch (e) {
 			print(e.toString());
@@ -46,6 +46,7 @@ class _EditProductFormState extends State<EditProductForm> {
 	@override
 	Widget build(BuildContext context) {
 		QueryDocumentSnapshot _passedVar = ModalRoute.of(context).settings.arguments;
+		_productName = _passedVar['name'];
 		_category = _passedVar['category'];
 		
 		return StreamBuilder(

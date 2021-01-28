@@ -17,9 +17,11 @@ class MyApp extends StatelessWidget {
 			DeviceOrientation.portraitUp,
 		]);
 		return MaterialApp(
+			debugShowCheckedModeBanner: false,
 			theme: ThemeData(
 				primaryColor: Color(0xFF800000),
 				accentColor: Color(0xFFA9A9A9),
+				backgroundColor: Color(0xFFDBDBDB),
 				textTheme: TextTheme(
 					headline1: TextStyle(fontSize: 28.0,),
 					headline2: TextStyle(fontSize: 14.0,)

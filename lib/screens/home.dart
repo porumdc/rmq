@@ -12,36 +12,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-	// void _addNewProduct() {
-	// 	showModalBottomSheet<dynamic>(
-	// 		context: context,
-	// 		isScrollControlled: true,
-	// 		enableDrag: false,
-		
-	// 		builder: (BuildContext context) {
-	// 			return Scaffold(
-	// 				body: Padding(
-	// 					padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-	// 					child: Column(
-	// 						children: <Widget>[
-	// 							GestureDetector(
-	// 								behavior: HitTestBehavior.opaque,
-	// 								onTap: () {},
-	// 								child: AddProductForm(),
-	// 							)
-	// 						],
-	// 					),
-	// 				),
-	// 			);
-	// 		},
-	// 	);
-	// }
 	String catName;
 
 	@override
 	Widget build(BuildContext context) {
 		return Scaffold(
-			backgroundColor: Colors.grey[100],
+			backgroundColor: Theme.of(context).backgroundColor,
 			appBar: AppBar(
 				title: Text('Price List'),
 				backgroundColor: rmqPrimaryColor,
@@ -86,7 +62,16 @@ class _HomeState extends State<Home> {
 													),
 												);
 											},
-											child: Text('Hardware'),
+											child: Container(
+												padding: EdgeInsets.all(10.0),
+												child: Text('Hardware'),
+												decoration: BoxDecoration(
+													border: Border.all(
+														width: 3.0,
+														color: rmqPrimaryColor,
+													),
+												)
+											),
 										),
 									),
 								),
@@ -95,6 +80,7 @@ class _HomeState extends State<Home> {
 									child: Container(
 										width: MediaQuery.of(context).size.width / 2,
 										height: MediaQuery.of(context).size.width / 2,
+										
 										child: FlatButton(
 											onPressed: () async {
 												Navigator.push(
@@ -106,7 +92,16 @@ class _HomeState extends State<Home> {
 													),
 												);
 											},
-											child: Text('Glassware'),
+											child: Container(
+												child: Text('Glassware'),
+												padding: EdgeInsets.all(10.0),
+												decoration: BoxDecoration(
+													border: Border.all(
+														width: 3.0,
+														color: rmqPrimaryColor,
+													),
+												)
+											),
 										),
 									),
 								),
@@ -132,7 +127,16 @@ class _HomeState extends State<Home> {
 													),
 												);
 											},
-											child: Text('School Supplies'),
+											child: Container(
+												child: Text('School Supplies'),
+												padding: EdgeInsets.all(10.0),
+												decoration: BoxDecoration(
+													border: Border.all(
+														width: 3.0,
+														color: rmqPrimaryColor,
+													),
+												)
+											),
 										),
 									),
 								),
@@ -152,7 +156,16 @@ class _HomeState extends State<Home> {
 													),
 												);
 											},
-											child: Text('Houseware'),
+											child: Container(
+												child: Text('Houseware'),
+												padding: EdgeInsets.all(10.0),
+												decoration: BoxDecoration(
+													border: Border.all(
+														width: 3.0,
+														color: rmqPrimaryColor,
+													),
+												)
+											),
 										),
 									),
 								),
@@ -178,7 +191,16 @@ class _HomeState extends State<Home> {
 													),
 												);
 											},
-											child: Text('Plasticware'),
+											child: Container(
+												child: Text('Plasticware'),
+												padding: EdgeInsets.all(10.0),
+												decoration: BoxDecoration(
+													border: Border.all(
+														width: 3.0,
+														color: rmqPrimaryColor,
+													),
+												)
+											),
 										),
 									),
 								),

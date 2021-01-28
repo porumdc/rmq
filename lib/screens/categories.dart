@@ -10,6 +10,7 @@ class CategoriesScreen extends StatelessWidget {
 		String _passedVar = ModalRoute.of(context).settings.arguments;
 
 		return Scaffold(
+			backgroundColor: Color(0xFFDBDBDB),
 			appBar: AppBar(
 				backgroundColor: rmqPrimaryColor,
 				actions: <Widget>[
@@ -35,7 +36,9 @@ class CategoriesScreen extends StatelessWidget {
 							itemCount: snapshot.data.docs.length,
 							itemBuilder: (context, index) {
 								DocumentSnapshot data = snapshot.data.docs[index];
-								return Center(
+								return (snapshot.data.docs.length == 0)
+								? Center(child: Text('Empty :c'))
+								: Center(
 									child: GestureDetector(
 										onTap: () async {
 											Navigator.push(
