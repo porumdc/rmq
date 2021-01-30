@@ -15,7 +15,7 @@ class CardWidget extends StatefulWidget {
 		@required this.category, 
 		@required this.productName, 
 		@required this.retailPrice, 
-		@required this.wholesalePrice, 
+		@required this.wholesalePrice,
 		@required this.itemcode,
 		@required this.imageURL}) 
 		: super(key: key);
